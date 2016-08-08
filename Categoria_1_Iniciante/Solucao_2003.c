@@ -2,7 +2,7 @@
 
 int main() {
   int hora, minuto, atraso;
-  while (scanf("%d:%d", &hora, &minuto) != E F) {
+  while (scanf("%d:%d", &hora, &minuto) != EOF) {
     atraso = 0;
     if (hora >= 7) {
       atraso = 60*(hora - 7) + minuto;
