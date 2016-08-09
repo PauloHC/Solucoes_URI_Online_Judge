@@ -1,9 +1,7 @@
 // c++11
-
 #include <algorithm>
 #include <cmath>
-#include <iomanip>
-#include <iostream>
+#include <cstdio>
 #include <vector>
 
 using namespace std;
@@ -19,38 +17,32 @@ double calc_area(vector<int> &tiras, double corte) {
 }
 
 int main() {
-  cout << fixed << setprecision(4);
-  ios_base::sync_with_stdio(false);
-  cin.tie(NULL);
-
-  int n_tiras;
+  int n, num;
   double area, soma, inf, meio, sup, res;
+  vector<int> tiras;
 
-  while (cin >> n_tiras >> area) {
+  while (scanf("%d %lf", &n, &area)) {
 
-    if ((n_tiras == 0) && (area == 0)) {
+    if (n == 0 && area == 0) {
       break;
     }
 
-    vector<int> tiras(n_tiras);
+    tiras.clear();
     soma = 0.0;
 
-    for (int i = 0; i < n_tiras; ++i) {
-      cin >> tiras[i];
-      soma += tiras[i];
+    for (int i = 0; i < n; ++i) {
+      scanf("%d", &num);
+      soma += num;
+      tiras.push_back(num);
     }
 
     if (fabs(soma - area)  < 1e-5) {
-      cout << ":D\n";
+      printf(":D\n");
       continue;
-    }
-
-    else if (soma < area) {
-      cout << "-.-\n";
+    } else if (soma < area) {
+      printf("-.-\n");
       continue;
-    }
-
-    else {
+    } else {
       inf = 0.0;
       sup = *max_element(tiras.begin(), tiras.end());
 
@@ -65,9 +57,9 @@ int main() {
         } else {
           sup = meio;
         }
-      }
 
-      cout << meio << '\n';
+      }
+      printf("%.4f\n", meio);
     }
 
   }
